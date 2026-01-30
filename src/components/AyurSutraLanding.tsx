@@ -13,7 +13,7 @@ import AyurSutraLogo from './AyurSutraLogo';
 const Icon = ({ name, className = "" }: { name: string, className?: string }) => {
   const iconMap: { [key: string]: string } = {
     calendar: "📅",
-    bell: "🔔", 
+    bell: "🔔",
     chart: "📊",
     alert: "⚠️",
     phone: "📞",
@@ -25,27 +25,27 @@ const Icon = ({ name, className = "" }: { name: string, className?: string }) =>
     menu: "☰",
     close: "✕"
   };
-  
+
   return <span className={`text-2xl ${className}`}>{iconMap[name] || "📍"}</span>;
 };
 
 const AyurSutraLanding = () => {
   const { user, signIn, signUp, signOut } = useAuth();
   const { toast } = useToast();
-  
+
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSignupOpen, setIsSignupOpen] = useState(false);
   const [isDemoOpen, setIsDemoOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+
   // Auth form states
   const [loginForm, setLoginForm] = useState({ email: '', password: '' });
-  const [signupForm, setSignupForm] = useState({ 
-    name: '', 
-    clinicName: '', 
-    email: '', 
-    password: '', 
-    confirmPassword: '' 
+  const [signupForm, setSignupForm] = useState({
+    name: '',
+    clinicName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -72,7 +72,7 @@ const AyurSutraLanding = () => {
 
     setIsSubmitting(true);
     const { error } = await signIn(loginForm.email, loginForm.password);
-    
+
     if (error) {
       toast({
         title: "Sign In Failed",
@@ -92,7 +92,7 @@ const AyurSutraLanding = () => {
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!signupForm.name || !signupForm.email || !signupForm.password) {
       toast({
         title: "Missing Information",
@@ -122,12 +122,12 @@ const AyurSutraLanding = () => {
 
     setIsSubmitting(true);
     const { error } = await signUp(
-      signupForm.email, 
-      signupForm.password, 
-      signupForm.name, 
+      signupForm.email,
+      signupForm.password,
+      signupForm.name,
       signupForm.clinicName
     );
-    
+
     if (error) {
       toast({
         title: "Sign Up Failed",
@@ -180,7 +180,7 @@ const AyurSutraLanding = () => {
             <div className="flex-shrink-0">
               <AyurSutraLogo size="md" variant="nav" />
             </div>
-            
+
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
@@ -286,13 +286,13 @@ const AyurSutraLanding = () => {
       {/* Hero Section - Premium Design */}
       <section id="hero" className="relative min-h-screen flex items-center justify-center text-center px-4 sm:px-6 lg:px-8 pt-16 overflow-hidden">
         {/* Premium Background with Authentic Ayurvedic Clinic */}
-        <div 
+        <div
           className="absolute inset-0 z-0 transform scale-110 transition-transform duration-1000 ease-out"
           style={{
             backgroundImage: `
               radial-gradient(ellipse at center top, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%), 
               linear-gradient(135deg, rgba(16, 78, 56, 0.3) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(16, 78, 56, 0.4) 100%), 
-              url('/src/assets/hero-spa.jpg')
+              url('/hero-spa.jpg')
             `,
             backgroundSize: 'cover',
             backgroundPosition: 'center center',
@@ -300,20 +300,20 @@ const AyurSutraLanding = () => {
             backgroundAttachment: 'fixed'
           }}
         />
-        
+
         {/* Animated Particles/Glow Effects */}
         <div className="absolute inset-0 z-5 opacity-20">
           <div className="absolute top-20 left-10 w-72 h-72 bg-ayur-gold rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary rounded-full filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-ayur-sage rounded-full filter blur-3xl opacity-25 animate-pulse delay-500"></div>
         </div>
-        
+
         {/* Premium Content Container */}
         <div className="relative z-10 max-w-6xl mx-auto">
 
-          
 
-          
+
+
           {/* Hero Title with Advanced Typography */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight animate-fade-in-up delay-200">
             <span className="block text-white drop-shadow-2xl">Empower Your</span>
@@ -321,18 +321,18 @@ const AyurSutraLanding = () => {
               Panchakarma Practice
             </span>
           </h1>
-          
+
           {/* Premium Subtitle */}
           <p className="text-xl md:text-2xl lg:text-3xl mb-12 text-white/90 max-w-4xl mx-auto leading-relaxed font-light animate-fade-in-up delay-400">
-            The complete practitioner portal for <span className="font-medium text-ayur-gold">Panchakarma clinic management</span> - 
+            The complete practitioner portal for <span className="font-medium text-ayur-gold">Panchakarma clinic management</span> -
             streamline patient care, automate workflows, and elevate your Ayurvedic practice.
           </p>
-          
+
           {/* Premium CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in-up delay-600">
-            <Button 
-              onClick={() => setIsDemoOpen(true)} 
-              size="lg" 
+            <Button
+              onClick={() => setIsDemoOpen(true)}
+              size="lg"
               className="group relative overflow-hidden bg-gradient-to-r from-ayur-gold to-ayur-saffron hover:from-ayur-saffron hover:to-ayur-gold text-white font-bold text-lg px-12 py-6 rounded-2xl shadow-2xl hover:shadow-ayur-gold/30 transition-all duration-500 transform hover:scale-105 border-2 border-ayur-gold/30"
             >
               <span className="relative z-10 flex items-center gap-3">
@@ -341,10 +341,10 @@ const AyurSutraLanding = () => {
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </Button>
-            
-            <Button 
-              variant="outline" 
-              size="lg" 
+
+            <Button
+              variant="outline"
+              size="lg"
               className="group bg-white/10 backdrop-blur-lg border-2 border-white/30 hover:bg-white/20 hover:border-white/50 text-white hover:text-white text-lg px-10 py-6 rounded-2xl shadow-xl transition-all duration-500 transform hover:scale-105"
             >
               <span className="flex items-center gap-3">
@@ -355,7 +355,7 @@ const AyurSutraLanding = () => {
               </span>
             </Button>
           </div>
-          
+
           {/* Trust Indicators */}
           <div className="mt-12 animate-fade-in-up delay-800">
             <div className="flex flex-wrap justify-center items-center gap-8 text-white/80">
@@ -374,7 +374,7 @@ const AyurSutraLanding = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
@@ -388,7 +388,7 @@ const AyurSutraLanding = () => {
         {/* Background Elements */}
         <div className="absolute top-0 right-0 w-72 h-72 bg-ayur-sage/10 rounded-full filter blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl"></div>
-        
+
         <div className="max-w-7xl mx-auto text-center relative z-10">
           <div className="mb-16">
             <h2 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
@@ -398,7 +398,7 @@ const AyurSutraLanding = () => {
               Traditional clinic management is holding back your Ayurvedic practice from reaching its full potential.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-orange-500/10 rounded-2xl transform group-hover:scale-105 transition-transform duration-500 blur-xl"></div>
@@ -416,7 +416,7 @@ const AyurSutraLanding = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-yellow-500/10 rounded-2xl transform group-hover:scale-105 transition-transform duration-500 blur-xl"></div>
               <div className="relative bg-white/80 backdrop-blur-lg p-8 rounded-2xl shadow-xl border border-orange-100 group-hover:border-orange-200 transition-all duration-500 group-hover:-translate-y-2">
@@ -433,7 +433,7 @@ const AyurSutraLanding = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-red-500/10 rounded-2xl transform group-hover:scale-105 transition-transform duration-500 blur-xl"></div>
               <div className="relative bg-white/80 backdrop-blur-lg p-8 rounded-2xl shadow-xl border border-yellow-100 group-hover:border-yellow-200 transition-all duration-500 group-hover:-translate-y-2">
@@ -451,7 +451,7 @@ const AyurSutraLanding = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="mt-16 p-8 bg-gradient-to-r from-red-50 to-orange-50 rounded-2xl border border-red-100">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">The Cost of Doing Nothing</h3>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
@@ -481,22 +481,22 @@ const AyurSutraLanding = () => {
         {/* Premium Background Elements */}
         <div className="absolute top-20 right-10 w-80 h-80 bg-gradient-to-br from-primary/20 to-ayur-gold/20 rounded-full filter blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-br from-ayur-sage/20 to-ayur-saffron/20 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-20">
-            
+
             <h2 className="text-5xl md:text-7xl font-bold mb-8 text-gray-900">
               <span className="block">Everything You Need</span>
               <span className="block bg-gradient-to-r from-primary via-ayur-sage to-ayur-gold bg-clip-text text-transparent">
                 In One Platform
               </span>
             </h2>
-            
+
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Transform your Ayurvedic practice with intelligent tools designed specifically for Panchakarma clinics.
             </p>
           </div>
-          
+
           {/* Premium Feature Cards */}
           <div className="grid lg:grid-cols-2 gap-12 mb-20">
             {/* Smart Scheduling Feature */}
@@ -506,7 +506,7 @@ const AyurSutraLanding = () => {
                 <div className="flex items-center mb-8">
                   <div className="w-20 h-20 bg-gradient-to-br from-primary to-ayur-sage rounded-2xl flex items-center justify-center text-white mr-6 group-hover:scale-110 transition-transform duration-300">
                     <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                      <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" />
                     </svg>
                   </div>
                   <div>
@@ -537,7 +537,7 @@ const AyurSutraLanding = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Patient Journey Tracking */}
             <div className="group relative">
               <div className="absolute inset-0 bg-gradient-to-br from-ayur-gold/20 to-ayur-saffron/20 rounded-3xl transform group-hover:scale-105 transition-transform duration-700 blur-2xl"></div>
@@ -545,7 +545,7 @@ const AyurSutraLanding = () => {
                 <div className="flex items-center mb-8">
                   <div className="w-20 h-20 bg-gradient-to-br from-ayur-gold to-ayur-saffron rounded-2xl flex items-center justify-center text-white mr-6 group-hover:scale-110 transition-transform duration-300">
                     <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9-2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9-2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
                     </svg>
                   </div>
                   <div>
@@ -577,13 +577,13 @@ const AyurSutraLanding = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Secondary Features Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="group text-center">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center text-white mx-auto mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-blue-500/30">
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+                  <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" />
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Smart Communication</h3>
@@ -591,11 +591,11 @@ const AyurSutraLanding = () => {
                 Automated WhatsApp & SMS with personalized pre/post-care instructions.
               </p>
             </div>
-            
+
             <div className="group text-center">
               <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center text-white mx-auto mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-green-500/30">
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Herbal Inventory</h3>
@@ -603,11 +603,11 @@ const AyurSutraLanding = () => {
                 Track medicines, oils, and herbs with expiry alerts and auto-reordering.
               </p>
             </div>
-            
+
             <div className="group text-center">
               <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center text-white mx-auto mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-purple-500/30">
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                  <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" />
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Smart Billing</h3>
@@ -615,11 +615,11 @@ const AyurSutraLanding = () => {
                 Automated invoicing with treatment packages and payment tracking.
               </p>
             </div>
-            
+
             <div className="group text-center">
               <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center text-white mx-auto mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-orange-500/30">
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9-2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9-2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Analytics Dashboard</h3>
@@ -798,10 +798,10 @@ const AyurSutraLanding = () => {
           <form onSubmit={handleSignIn} className="space-y-4 mt-4">
             <div>
               <Label htmlFor="loginEmail">Email Address *</Label>
-              <Input 
-                id="loginEmail" 
-                type="email" 
-                placeholder="Enter your email" 
+              <Input
+                id="loginEmail"
+                type="email"
+                placeholder="Enter your email"
                 className="mt-1"
                 value={loginForm.email}
                 onChange={(e) => setLoginForm(prev => ({ ...prev, email: e.target.value }))}
@@ -811,9 +811,9 @@ const AyurSutraLanding = () => {
             <div>
               <Label htmlFor="loginPassword">Password *</Label>
               <div className="relative mt-1">
-                <Input 
-                  id="loginPassword" 
-                  type={showPassword ? "text" : "password"} 
+                <Input
+                  id="loginPassword"
+                  type={showPassword ? "text" : "password"}
                   placeholder="Enter your password"
                   value={loginForm.password}
                   onChange={(e) => setLoginForm(prev => ({ ...prev, password: e.target.value }))}
@@ -835,9 +835,9 @@ const AyurSutraLanding = () => {
               </label>
               <a href="#" className="text-sm text-primary hover:underline">Forgot Password?</a>
             </div>
-            <Button 
-              type="submit" 
-              className="w-full btn-primary" 
+            <Button
+              type="submit"
+              className="w-full btn-primary"
               disabled={isSubmitting}
             >
               {isSubmitting ? (
@@ -852,7 +852,7 @@ const AyurSutraLanding = () => {
             <div className="text-center">
               <p className="text-sm text-muted-foreground">
                 Don't have an account?{' '}
-                <button 
+                <button
                   type="button"
                   onClick={switchToSignup}
                   className="text-primary hover:underline font-medium"
@@ -878,8 +878,8 @@ const AyurSutraLanding = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <Label htmlFor="signupName">Full Name *</Label>
-                <Input 
-                  id="signupName" 
+                <Input
+                  id="signupName"
                   placeholder="Enter your full name"
                   className="mt-1"
                   value={signupForm.name}
@@ -889,8 +889,8 @@ const AyurSutraLanding = () => {
               </div>
               <div>
                 <Label htmlFor="signupClinicName">Clinic Name</Label>
-                <Input 
-                  id="signupClinicName" 
+                <Input
+                  id="signupClinicName"
                   placeholder="Enter your clinic name"
                   className="mt-1"
                   value={signupForm.clinicName}
@@ -900,9 +900,9 @@ const AyurSutraLanding = () => {
             </div>
             <div>
               <Label htmlFor="signupEmail">Email Address *</Label>
-              <Input 
-                id="signupEmail" 
-                type="email" 
+              <Input
+                id="signupEmail"
+                type="email"
                 placeholder="Enter your email"
                 className="mt-1"
                 value={signupForm.email}
@@ -913,9 +913,9 @@ const AyurSutraLanding = () => {
             <div>
               <Label htmlFor="signupPassword">Password *</Label>
               <div className="relative mt-1">
-                <Input 
-                  id="signupPassword" 
-                  type={showPassword ? "text" : "password"} 
+                <Input
+                  id="signupPassword"
+                  type={showPassword ? "text" : "password"}
                   placeholder="Create a password (min. 6 characters)"
                   value={signupForm.password}
                   onChange={(e) => setSignupForm(prev => ({ ...prev, password: e.target.value }))}
@@ -933,9 +933,9 @@ const AyurSutraLanding = () => {
             <div>
               <Label htmlFor="confirmPassword">Confirm Password *</Label>
               <div className="relative mt-1">
-                <Input 
-                  id="confirmPassword" 
-                  type={showConfirmPassword ? "text" : "password"} 
+                <Input
+                  id="confirmPassword"
+                  type={showConfirmPassword ? "text" : "password"}
                   placeholder="Confirm your password"
                   value={signupForm.confirmPassword}
                   onChange={(e) => setSignupForm(prev => ({ ...prev, confirmPassword: e.target.value }))}
@@ -959,9 +959,9 @@ const AyurSutraLanding = () => {
                 <a href="#" className="text-primary hover:underline">Privacy Policy</a>
               </span>
             </div>
-            <Button 
-              type="submit" 
-              className="w-full btn-primary" 
+            <Button
+              type="submit"
+              className="w-full btn-primary"
               disabled={isSubmitting}
             >
               {isSubmitting ? (
@@ -976,7 +976,7 @@ const AyurSutraLanding = () => {
             <div className="text-center">
               <p className="text-sm text-muted-foreground">
                 Already have an account?{' '}
-                <button 
+                <button
                   type="button"
                   onClick={switchToLogin}
                   className="text-primary hover:underline font-medium"
