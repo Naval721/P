@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AyurSutra Design System - Ayurvedic-inspired colors and styles */
+
+@layer base {
+  :root {
+    /* Ayurvedic Color Palette */
+    --background: 46 70% 97%;
+    --foreground: 150 15% 15%;
+
+    --card: 40 40% 98%;
+    --card-foreground: 150 15% 15%;
+
+    --popover: 40 40% 98%;
+    --popover-foreground: 150 15% 15%;
+
+    /* Deep Forest Green - Primary Ayurvedic color */
+    --primary: 150 60% 25%;
+    --primary-foreground: 46 70% 97%;
+
+    /* Warm Saffron - Secondary accent */
+    --secondary: 30 85% 65%;
+    --secondary-foreground: 150 15% 15%;
+
+    /* Soft Earth Tones */
+    --muted: 45 25% 88%;
+    --muted-foreground: 150 10% 45%;
+
+    /* Healing Green Accent */
+    --accent: 120 40% 85%;
+    --accent-foreground: 150 60% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 46 70% 97%;
+
+    --border: 45 20% 85%;
+    --input: 45 20% 90%;
+    --ring: 150 60% 25%;
+
+    --radius: 0.75rem;
+
+    /* Custom Ayurvedic Design Tokens */
+    --ayur-sage: 150 40% 75%;
+    --ayur-earth: 30 35% 70%;
+    --ayur-cream: 46 60% 92%;
+    --ayur-gold: 45 90% 70%;
+    --ayur-forest-deep: 150 70% 20%;
+    --ayur-saffron: 25 90% 65%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--ayur-sage)));
+    --gradient-warm: linear-gradient(135deg, hsl(var(--ayur-saffron)), hsl(var(--ayur-gold)));
+    --gradient-earth: linear-gradient(180deg, hsl(var(--ayur-cream)), hsl(var(--background)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--ayur-forest-deep)) 0%, hsl(var(--primary)) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(var(--primary) / 0.15);
+    --shadow-warm: 0 8px 30px -8px hsl(var(--ayur-saffron) / 0.25);
+    --shadow-elegant: 0 10px 40px -12px hsl(var(--primary) / 0.2);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-poppins;
+  }
+}
+
+/* Custom Ayurvedic Components */
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-br from-primary via-ayur-sage to-primary text-white font-semibold;
+    @apply shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40;
+    @apply border border-primary/20 hover:border-primary/40;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:-translate-y-1 active:scale-95 active:translate-y-0;
+    @apply relative overflow-hidden;
+  }
+  
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 transition-opacity duration-300;
+  }
+  
+  .btn-primary:hover::before {
+    @apply opacity-100;
+  }
+  
+  .btn-secondary {
+    @apply bg-gradient-to-br from-ayur-saffron via-ayur-gold to-ayur-saffron text-white font-semibold;
+    @apply shadow-lg shadow-ayur-saffron/25 hover:shadow-xl hover:shadow-ayur-saffron/40;
+    @apply border border-ayur-saffron/20 hover:border-ayur-saffron/40;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:-translate-y-1 active:scale-95 active:translate-y-0;
+    @apply relative overflow-hidden;
+  }
+  
+  .btn-secondary::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 transition-opacity duration-300;
+  }
+  
+  .btn-secondary:hover::before {
+    @apply opacity-100;
+  }
+  
+  .btn-outline-premium {
+    @apply bg-white/10 backdrop-blur-md text-white font-semibold;
+    @apply border-2 border-white/30 hover:border-white/60;
+    @apply shadow-lg shadow-black/20 hover:shadow-xl hover:shadow-black/30;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:-translate-y-1 hover:bg-white/20 active:scale-95;
+  }
+  
+  .btn-cta {
+    @apply bg-gradient-to-br from-ayur-gold via-ayur-saffron to-orange-500 text-white font-bold;
+    @apply shadow-xl shadow-ayur-gold/30 hover:shadow-2xl hover:shadow-ayur-gold/50;
+    @apply border border-ayur-gold/30 hover:border-ayur-gold/60;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:scale-110 hover:-translate-y-2 active:scale-95;
+    @apply relative overflow-hidden;
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 25px 50px -12px hsl(var(--ayur-gold) / 0.3); }
+    50% { box-shadow: 0 25px 50px -12px hsl(var(--ayur-gold) / 0.6), 0 0 0 1px hsl(var(--ayur-gold) / 0.3); }
+  }
+  
+  .btn-cta::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0;
+    @apply transition-all duration-500;
+    transform: translateX(-100%);
+  }
+  
+  .btn-cta:hover::before {
+    @apply opacity-100;
+    transform: translateX(100%);
+  }
+  
+  .ayur-card {
+    @apply bg-card/80 backdrop-blur-md border border-border/60 rounded-xl shadow-soft;
+    @apply hover:shadow-elegant hover:border-primary/20 hover:bg-card/90;
+    @apply transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1;
+    @apply relative overflow-hidden;
+  }
+  
+  .ayur-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary/50 via-ayur-sage/30 to-primary/50;
+    @apply transition-opacity duration-300 opacity-0;
+  }
+  
+  .ayur-card:hover::before {
+    @apply opacity-100;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-ayur-sage to-secondary;
+    @apply bg-clip-text text-transparent;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24 px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Premium Animations for Top-Class UI */
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  
+  .animate-gradient-x {
+    animation: gradient-x 8s ease infinite;
+    background-size: 400% 400%;
+  }
+  
+  .delay-200 { animation-delay: 200ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+  .delay-800 { animation-delay: 800ms; }
+  .delay-1000 { animation-delay: 1000ms; }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes gradient-x {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
